@@ -1,0 +1,34 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/google-map/google-map.html">
+
+<dom-module id="back-map">
+
+    <style>
+	    google-map{
+	    	   position:static;
+	           display: block; 
+	           height: 100%;
+	           width: 100%;
+	       }
+
+    </style>
+
+    <template>
+
+      <!-- Main content -->
+    <google-map></google-map>
+
+
+  </template>
+
+  <script>
+
+    Polymer({
+
+      is: 'back-map'
+
+    });
+
+  </script>
+
+</dom-module>
