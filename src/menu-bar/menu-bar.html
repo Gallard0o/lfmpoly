@@ -6,6 +6,8 @@
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="/src/menu-bar/left-drawer/left-drawer.html">
+
 
 
 <dom-module id="menu-bar">
@@ -38,7 +40,9 @@
       <!-- Main content -->
     <app-drawer-layout>
 
-      <app-drawer swipe-open></app-drawer>
+      <app-drawer swipe-open>
+        <left-drawer></left-drawer>
+      </app-drawer>
 
       <app-drawer id="endDrawer" align="end"></app-drawer>
 
