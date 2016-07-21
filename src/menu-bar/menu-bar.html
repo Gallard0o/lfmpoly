@@ -7,7 +7,8 @@
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 
-<dom-module id="nav-bar">
+
+<dom-module id="menu-bar">
 
     <style>
 
@@ -23,6 +24,13 @@
             }
           }
 
+      .flex-horizontal {
+              @apply(--layout-horizontal);
+            }
+      .flexchild {
+              @apply(--layout-flex);
+            }
+
     </style>
 
     <template>
@@ -34,10 +42,10 @@
 
       <app-drawer id="endDrawer" align="end"></app-drawer>
 
-      <app-toolbar>
-        <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-        <div main-title></div>
-        <paper-icon-button icon="info" on-tap="_toggleDrawer"></paper-icon-button>
+      <app-toolbar class="container flex-horizontal">
+        <paper-icon-button icon="search" drawer-toggle></paper-icon-button>
+        <div main-title class="flexchild"></div>
+        <paper-icon-button icon="account-circle" on-tap="_toggleDrawer"></paper-icon-button>
       </app-toolbar>
 
     </app-drawer-layout>
@@ -49,9 +57,9 @@
 
     Polymer({
 
-      is: 'nav-bar',
+      is: 'menu-bar',
       _toggleDrawer: function(){
-        this.$.endDrawer(this.$.endDrawer.toggle());
+        this.$.endDrawer.toggle();
       }
 
     });
