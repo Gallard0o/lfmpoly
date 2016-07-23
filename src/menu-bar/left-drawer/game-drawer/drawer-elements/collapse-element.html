@@ -1,9 +1,9 @@
-<link rel="import" href="../../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../../../bower_components/iron-collapse/iron-collapse.html">
-<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
-<link rel="import" href="../../../../bower_components/paper-item/paper-icon-item.html">
-<link rel="import" href="../../../../bower_components/paper-item/paper-item-body.html">
+<link rel="import" href="../../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../../../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../../../../../bower_components/paper-item/paper-item-body.html">
 
 
 
@@ -38,7 +38,9 @@
        }
 
     </style>
+
 <template>
+
   <template is="dom-repeat" items="{{games}}">
     <paper-button id$="options" class="heading" on-click="toggle">
       <div role="listbox" class="item-container">
@@ -59,7 +61,9 @@
       </div>
     </iron-collapse>
   </template>
+
 </template>
+
   <script>
 
     Polymer({
