@@ -20,25 +20,34 @@
 
     </style>
 
-    <template>
+  <template>
 
-    <paper-tabs selected="0" fit-container>
+    <section is="auto-binding">
+    <paper-tabs selected="{{ selected }}" fit-container>
       <paper-tab><iron-icon icon="av:games" prefix></iron-icon></paper-tab>
       <paper-tab><iron-icon icon="social:people" prefix></iron-icon></paper-tab>
       <paper-tab><iron-icon icon="communication:textsms" prefix></iron-icon></paper-tab>
     </paper-tabs>
-    <game-drawer></game-drawer>
-    <social-drawer></social-drawer>
-    <message-drawer></message-drawer>
+
+    <iron-pages selected="{{ selected }}">
+      <game-drawer></game-drawer>
+      <social-drawer></social-drawer>
+      <message-drawer></message-drawer>
+    </iron-pages>
+    </section>
 
   </template>
 
   <script>
 
     Polymer({
-
-      is: 'left-drawer'
+      is: 'left-drawer',
+      properties: {
+          selected: {
+              value: 0
+          }
+        }
     });
 
-
   </script>
+
