@@ -4,6 +4,8 @@
 <link rel="import" href="../../../../../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../../../../../bower_components/paper-item/paper-icon-item.html">
 <link rel="import" href="../../../../../bower_components/paper-item/paper-item-body.html">
+<link rel="import" href="../../../../../bower_components/paper-badge/paper-badge.html">
+<link rel="import" href="/src/menu-bar/left-drawer/game-drawer/drawer-elements/gamecollapse-content.html">
 
 
 
@@ -37,6 +39,10 @@
          background: var(--paper-amber-500);
        }
 
+       iron-collapse{
+        padding: 0px 10px 15px;
+       }
+
     </style>
 
 <template>
@@ -49,16 +55,13 @@
            <paper-item-body>
              <div class="item-text">{{item.title}}</div>
            </paper-item-body>
-           <paper-icon-button icon="star" alt="favourite this!">
-           </paper-icon-button>
+            <paper-badge label="{{item.notifications}}"></paper-badge>
          </paper-icon-item>
        </div>
     </paper-button>
 
     <iron-collapse id$="collapse{{item.id}}">
-      <div class="collapse-content">
-        <div>Content goes here...</div>
-      </div>
+    <gamecollapse-content></gamecollapse-content>
     </iron-collapse>
   </template>
 
@@ -77,9 +80,9 @@
 
       ready: function() {
               this.games = [
-                  {title: 'League of Legends', icon: '', id:"1"},
-                  {title: 'World of Warcraft', icon: '', id:"2"},
-                  {title: 'Pokemon GO', icon: '', id:"3"}
+                  {title: 'League of Legends', icon: '', id:"1", notifications:"2"},
+                  {title: 'World of Warcraft', icon: '', id:"2", notifications:""},
+                  {title: 'Pokemon GO', icon: '', id:"3", notifications:"9"}
               ];
             }
     });
