@@ -5,6 +5,7 @@
 <link rel="import" href="../../../../../bower_components/paper-item/paper-icon-item.html">
 <link rel="import" href="../../../../../bower_components/paper-item/paper-item-body.html">
 <link rel="import" href="../../../../../bower_components/paper-badge/paper-badge.html">
+<link rel="import" href="../../../../../bower_components/paper-toggle-button/paper-toggle-button.html">
 <link rel="import" href="/src/menu-bar/left-drawer/game-drawer/drawer-elements/gamecollapse-content.html">
 
 
@@ -39,6 +40,30 @@
          background: var(--paper-amber-500);
        }
 
+       .collapse-toggles {
+         margin-bottom: .5em;
+       }
+
+       .flex-center-justified {
+           @apply(--layout-horizontal);
+           @apply(--layout-center-justified);
+         }
+
+       .flex-equal-justified {
+           @apply(--layout-horizontal);
+           @apply(--layout-justified);
+         }
+
+         .flex-start-justified {
+         @apply(--layout-horizontal);
+         @apply(--layout-start-justified);
+       }
+
+         .collapse-news paper-button {
+            padding: 0.7em 0em;
+            width: 100%;
+         }
+
        iron-collapse{
         padding: 0px 10px 15px;
        }
@@ -61,8 +86,26 @@
     </paper-button>
 
     <iron-collapse id$="collapse{{item.id}}">
-    <gamecollapse-content></gamecollapse-content>
-    </iron-collapse>
+      <div class="collapse-toggles container flex-equal-justified">
+        <div>
+         <span>Buscar</span>
+          <paper-toggle-button checked class="container flex-center-justified"></paper-toggle-button>
+        </div>
+        <div>
+          <span>Encontrarme</span>
+          <paper-toggle-button checked class="container flex-center-justified"></paper-toggle-button>
+        </div>
+        <div>
+          <span>Noticias</span>
+          <paper-toggle-button checked class="container flex-center-justified"></paper-toggle-button>
+        </div>
+      </div>
+      <template is="dom-repeat" items="{{item.news}}">
+        <div class="collapse-news">
+          <paper-button class="container flex-start-justified"><span>{{item.newsTitle}}</span></paper-button>
+        </div>
+        </iron-collapse>
+      </template>
   </template>
 
 </template>
@@ -80,8 +123,13 @@
 
       ready: function() {
               this.games = [
-                  {title: 'League of Legends', icon: '', id:"1", notifications:"2"},
+                  {title: 'League of Legends', icon: '', id:"1", notifications:"2", news:[{newsTitle: 'Nuevos heroes arriban al nexo', newsContent: 'Talisha is comming', link:'league.com'},
+                                                                                          {newsTitle: 'Taric sale del closet', newsContent: 'se le encontró con EZ', link:'league.com'},
+                                                                                          {newsTitle: 'Jinx es una putona', newsContent: 'y además lesbiana, tijeretea con MF', link:'league.com'}]
+                                                                                          },
+
                   {title: 'World of Warcraft', icon: '', id:"2", notifications:""},
+
                   {title: 'Pokemon GO', icon: '', id:"3", notifications:"9"}
               ];
             }
