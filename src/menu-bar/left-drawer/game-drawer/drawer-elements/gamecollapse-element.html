@@ -6,7 +6,7 @@
 <link rel="import" href="../../../../../bower_components/paper-item/paper-item-body.html">
 <link rel="import" href="../../../../../bower_components/paper-badge/paper-badge.html">
 <link rel="import" href="../../../../../bower_components/paper-toggle-button/paper-toggle-button.html">
-<link rel="import" href="/src/menu-bar/left-drawer/game-drawer/drawer-elements/gamecollapse-content.html">
+<link rel="import" href="../../../../../bower_components/paper-dialog/paper-dialog.html">
 
 
 
@@ -73,7 +73,7 @@
 <template>
 
   <template is="dom-repeat" items="{{games}}">
-    <paper-button id$="options" class="heading" on-click="toggle">
+    <paper-button id$="options" class="heading" on-click="_toggle">
       <div role="listbox" class="item-container">
         <paper-icon-item>
            <div class="avatar blue" item-icon></div>
@@ -102,7 +102,13 @@
       </div>
       <template is="dom-repeat" items="{{item.news}}">
         <div class="collapse-news">
-          <paper-button class="container flex-start-justified"><span>{{item.newsTitle}}</span></paper-button>
+          <paper-button on-click="_toggleDialog" class="container flex-start-justified"><span>{{item.newsTitle}}</span></paper-button>
+          <paper-dialog opened id="dialog"><p>hola</p>
+           <div class="buttons">
+              <paper-button dialog-dismiss>Cancel</paper-button>
+              <paper-button dialog-confirm autofocus>Accept</paper-button>
+           </div>
+          </paper-dialog>
         </div>
         </iron-collapse>
       </template>
@@ -115,7 +121,7 @@
     Polymer({
 
       is: 'gamecollapse-element',
-      toggle: function (event, detail, sender) {
+      _toggle: function (event, detail, sender) {
                   var id = event.model.item.id;
                   var selector = '#collapse' + id;
                   this.$$(selector).toggle();
@@ -132,7 +138,10 @@
 
                   {title: 'Pokemon GO', icon: '', id:"3", notifications:"9"}
               ];
-            }
+            },
+            _toggleDialog: function() {
+            this.$.dialog.open();
+        }
     });
 
 
