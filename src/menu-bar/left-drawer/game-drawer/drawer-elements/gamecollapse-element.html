@@ -13,6 +13,7 @@
 <dom-module id="gamecollapse-element">
 
     <style>
+
       .collapse-content {
          padding: 15px;
          border: 1px solid #dedede;
@@ -103,7 +104,7 @@
       <template is="dom-repeat" items="{{item.news}}">
         <div class="collapse-news">
           <paper-button on-click="_toggleDialog" class="container flex-start-justified"><span>{{item.newsTitle}}</span></paper-button>
-          <paper-dialog opened id="dialog"><p>hola</p>
+          <paper-dialog id$="dialog{{item.ids}}"><p>{{item.newsContent}}</p>
            <div class="buttons">
               <paper-button dialog-dismiss>Cancel</paper-button>
               <paper-button dialog-confirm autofocus>Accept</paper-button>
@@ -129,9 +130,9 @@
 
       ready: function() {
               this.games = [
-                  {title: 'League of Legends', icon: '', id:"1", notifications:"2", news:[{newsTitle: 'Nuevos heroes arriban al nexo', newsContent: 'Talisha is comming', link:'league.com'},
-                                                                                          {newsTitle: 'Taric sale del closet', newsContent: 'se le encontró con EZ', link:'league.com'},
-                                                                                          {newsTitle: 'Jinx es una putona', newsContent: 'y además lesbiana, tijeretea con MF', link:'league.com'}]
+                  {title: 'League of Legends', icon: '', id:"1", notifications:"2", news:[{newsTitle: 'Nuevos heroes arriban al nexo', newsContent: 'Talisha is comming', link:'league.com', ids:'1'},
+                                                                                          {newsTitle: 'Taric sale del closet', newsContent: 'se le encontró con EZ', link:'league.com', ids:'2'},
+                                                                                          {newsTitle: 'Jinx es una putona', newsContent: 'y además lesbiana, tijeretea con MF', link:'league.com', ids:'3'}]
                                                                                           },
 
                   {title: 'World of Warcraft', icon: '', id:"2", notifications:""},
@@ -139,8 +140,11 @@
                   {title: 'Pokemon GO', icon: '', id:"3", notifications:"9"}
               ];
             },
-            _toggleDialog: function() {
-            this.$.dialog.open();
+
+      _toggleDialog: function(event, detail, sender) {
+      var ids = event.model.item.ids;
+      var selector = '#dialog' + ids;
+      this.$$(selector).toggle();
         }
     });
 
