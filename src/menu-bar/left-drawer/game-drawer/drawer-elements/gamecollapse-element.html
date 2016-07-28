@@ -69,6 +69,33 @@
         padding: 0px 10px 15px;
        }
 
+      paper-dialog {
+            position: fixed;
+            width: 59vw;
+            left: 258px;
+            margin: 0px;
+            top: 12%;
+            bottom: 12%;
+        }
+
+      @media (max-width: 640px) {
+         paper-dialog {
+          position: fixed;
+          width: 90vw;
+          top: 12%;
+          bottom: 12%;
+          left: 0%;
+          margin: 0px;
+        }
+      }
+
+      paper-dialog h3 {
+        margin: 0px!important;
+        padding: 28px!important;
+        background-color: #9c9c9c;
+      }
+
+
     </style>
 
 <template>
@@ -77,11 +104,10 @@
     <paper-button id$="options" class="heading" on-click="_toggle">
       <div role="listbox" class="item-container">
         <paper-icon-item>
-           <div class="avatar blue" item-icon></div>
+           <div class="avatar blue" item-icon><paper-badge label="{{item.notifications}}"></paper-badge></div>
            <paper-item-body>
              <div class="item-text">{{item.title}}</div>
            </paper-item-body>
-            <paper-badge label="{{item.notifications}}"></paper-badge>
          </paper-icon-item>
        </div>
     </paper-button>
@@ -101,18 +127,21 @@
           <paper-toggle-button checked class="container flex-center-justified"></paper-toggle-button>
         </div>
       </div>
-      <template is="dom-repeat" items="{{item.news}}">
-        <div class="collapse-news">
-          <paper-button on-click="_toggleDialog" class="container flex-start-justified"><span>{{item.newsTitle}}</span></paper-button>
-          <paper-dialog id$="dialog{{item.ids}}"><p>{{item.newsContent}}</p>
+      <div class="collapse-news">
+        <span class="container flex-center-justified">Noticias</span>
+        <template is="dom-repeat" items="{{item.news}}">
+          <paper-button on-click="_toggleDialog" class="container flex-start-justified"><span>{{item.newsTitle}}</span>
+          </paper-button>
+          <paper-dialog id$="dialog{{item.ids}}">
+           <h3>{{item.newsTitle}}</h3>
+           <p>{{item.newsContent}}</p>
            <div class="buttons">
-              <paper-button dialog-dismiss>Cancel</paper-button>
-              <paper-button dialog-confirm autofocus>Accept</paper-button>
+              <paper-button dialog-dismiss>Cerrar</paper-button>
            </div>
           </paper-dialog>
-        </div>
+        </template>
+      </div>
         </iron-collapse>
-      </template>
   </template>
 
 </template>
